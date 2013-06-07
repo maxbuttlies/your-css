@@ -1,0 +1,109 @@
+html , body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.clearfix {
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.all {
+	height: 100%;
+}
+
+.rightBar {
+	float: left;
+	height: 100%;
+	.editorCustom {
+		z-index: 0;
+		color: #fff;
+		background: #272822;
+	}
+
+	textarea , textarea:active {
+		border: none;
+		color: transparent;
+		background: transparent;
+		z-index: 10;
+		outline: none;
+	}
+
+	textarea , .editorCustom {
+		font-size: 25px;
+		overflow: hidden;
+		font-family: sans-serif;
+		margin: 0;
+		padding: 10px;
+		position: absolute;
+		border: none;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.leftBar {
+	float: left;
+	background: #285c00;
+	height: 100%;
+	width: 200px;
+	.domains {
+		overflow: hidden;
+		float: left;
+		width: 100%;
+		height: 80%;
+		.domain {
+			padding: 10px;
+			display: block;
+			color: #fff;
+			font-size: 20px;
+			text-decoration: none;
+			font-weight: bold;
+			font-family: sans-serif;
+			cursor: pointer;
+			.gwt-Label {
+				position: relative;
+				white-space: nowrap;
+				overflow: hidden;
+				float: left;
+				width: 80%;
+			}
+
+			img {
+				float: left;
+				width: 16px;
+				height: 16px;
+			}
+
+			&:hover {
+				background: #72b42d;
+			}
+		}
+	}
+
+	.options {
+		.new , .settings {
+			background: #8EF13C;
+			border: none;
+			margin: 10px 0 0;
+			text-align: center;
+			vertical-align: middle;
+			padding: 10px;
+			display: block;
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			font-family: sans-serif;
+			position: relative;
+			white-space: nowrap;
+			cursor: pointer;
+			overflow: hidden;
+			width: 100%;
+		}
+	}
+}
+

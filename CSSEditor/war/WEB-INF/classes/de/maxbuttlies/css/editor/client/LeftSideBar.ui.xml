@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:de.maxbuttlies.css.editor.client">
+
+	<g:HTMLPanel styleName="leftBar">
+		<g:ScrollPanel styleName="domains">
+			<g:HTMLPanel ui:field="domains"></g:HTMLPanel>
+		</g:ScrollPanel>
+		<g:HTMLPanel styleName="options">
+			<g:Button ui:field="new" styleName="new">Add Page</g:Button>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

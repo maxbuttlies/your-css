@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:de.maxbuttlies.css.editor.client">
+
+	<g:HTMLPanel styleName="all">
+		<e:LeftSideBar></e:LeftSideBar>
+		<g:HTMLPanel styleName="rightBar">
+			<e:EditorPanel ui:field="editor"></e:EditorPanel>
+		</g:HTMLPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

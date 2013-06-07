@@ -1,0 +1,2 @@
+serviceClass: de.maxbuttlies.css.editor.client.rpc.EditorService
+path: D22530BA1D620E194ACC50CBF2D934A9.gwt.rpc
