@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CSSServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3126038728684722293L;
 	private static final String PARAM_DOMAIN = "d";
 
 	@Override

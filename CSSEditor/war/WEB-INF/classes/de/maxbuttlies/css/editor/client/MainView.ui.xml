@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:e="urn:import:de.maxbuttlies.css.editor.client">
 
 	<g:HTMLPanel styleName="all">
-		<e:LeftSideBar></e:LeftSideBar>
+		<e:LeftBarPanel></e:LeftBarPanel>
 		<g:HTMLPanel styleName="rightBar">
 			<e:EditorPanel ui:field="editor"></e:EditorPanel>
 		</g:HTMLPanel>

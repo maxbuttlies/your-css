@@ -2,6 +2,8 @@ html , body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	background: efefef;
+	font-family:sans-serif;
 }
 
 .clearfix {
@@ -14,6 +16,19 @@ html , body {
 
 .all {
 	height: 100%;
+}
+
+#loadMessage {
+	transition: width 1s linear 2s;
+	width: 200px;
+	border: 1px solid #ddd;
+	background: #eee;
+	margin: 10px auto;
+	padding: 10px;
+	&.hide {
+		transition: width 1s linear 2s;
+		display: none;
+	}
 }
 
 .rightBar {

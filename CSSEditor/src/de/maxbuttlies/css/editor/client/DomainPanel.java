@@ -13,8 +13,7 @@ public class DomainPanel extends Composite {
 	private static DomainPanelUiBinder uiBinder = GWT
 			.create(DomainPanelUiBinder.class);
 
-	interface DomainPanelUiBinder extends
-			UiBinder<Widget, DomainPanel> {
+	interface DomainPanelUiBinder extends UiBinder<Widget, DomainPanel> {
 	}
 
 	@UiField
@@ -33,10 +32,18 @@ public class DomainPanel extends Composite {
 
 	public DomainPanel(String domain) {
 		this();
+		this.setDomain(domain);
+
+	}
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
 		this.domain = domain;
 		image.setUrl(IMAGEURL + domain);
 		label.setText(domain);
-
 	}
 
 }

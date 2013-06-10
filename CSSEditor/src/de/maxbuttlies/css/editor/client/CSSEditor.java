@@ -6,8 +6,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class CSSEditor implements EntryPoint {
 
 	public void onModuleLoad() {
-
+		RootPanel.get("loadMessage").addStyleName("hide");
 		RootPanel.get().add(new MainView());
-
 	}
 }

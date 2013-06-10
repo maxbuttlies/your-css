@@ -22,8 +22,7 @@ public class EditorPanel extends Composite {
 	private static EditorPanelUiBinder uiBinder = GWT
 			.create(EditorPanelUiBinder.class);
 
-	interface EditorPanelUiBinder extends
-			UiBinder<Widget, EditorPanel> {
+	interface EditorPanelUiBinder extends UiBinder<Widget, EditorPanel> {
 	}
 
 	@UiField
@@ -32,21 +31,24 @@ public class EditorPanel extends Composite {
 	@UiField
 	HTMLPanel custom;
 
-	String[] idClass = { ".", "#" };
-	String[] attr = { "font-size", "line-height" };
-	String[] breaks = { "{", "}" };
-	String[] elements = { "p", "li" };
-	String tab = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	String maxSize = "line-height:60px;\nfont-size:50px;";
 	private boolean ctrlPressed = false;
 
 	private int fontSize = 20;
 
-	private MainView parent;
+	private ClientController controller;
 
-	public EditorPanel(final MainView parent) {
+	public EditorPanel(ClientController controller) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.parent = parent;
+		this.controller = controller;
+		init();
+	}
+
+	public void setText(String text) {
+		textarea.setText(text);
+		sync();
+	}
+
+	private void init() {
 		textarea.addMouseWheelHandler(new MouseWheelHandler() {
 
 			@Override
@@ -87,6 +89,7 @@ public class EditorPanel extends Composite {
 				}
 
 			}
+
 		});
 		textarea.addKeyUpHandler(new KeyUpHandler() {
 
@@ -95,13 +98,9 @@ public class EditorPanel extends Composite {
 				ctrlPressed = false;
 				sync();
 			}
+
 		});
 
-	}
-
-	public void setText(String text) {
-		textarea.setText(text);
-		sync();
 	}
 
 	private void sync() {
@@ -109,15 +108,8 @@ public class EditorPanel extends Composite {
 	}
 
 	private void sync(boolean insertTab) {
-
 		custom.clear();
 		String text = textarea.getText();
-		if (text.contains("%maxSize%")) {
-			textarea.setText(text);
-		}
-
-		parent.saveCSS(text);
-
 		if (insertTab) {
 			int index = textarea.getCursorPos();
 			String pre = text.substring(0, index);
@@ -126,40 +118,11 @@ public class EditorPanel extends Composite {
 			text = pre + "\t" + post;
 			textarea.setText(text);
 		}
-
-		text = text.replace("\n", "<br/>");
-		text = replaceArray(attr, text, "#0000ff");
-		text = replaceAfterArray(text);
-		text = text.replace("\t", tab);
+		text = EditorHelper.replacePlaceHolder(text);
+		textarea.setText(text);
+		controller.saveCSS(text);
+		text = EditorHelper.formatText(text);
 		custom.add(new HTMLPanel(text));
-	}
-
-	private String replaceArray(String[] arr, String content,
-			String color) {
-		for (String value : arr) {
-
-			content = content.replace(value, "<span style=\"color:"
-					+ color + ";\">" + value + "</span>");
-
-		}
-
-		return content;
-	}
-
-	private String replaceAfterArray(String content) {
-		String[] v = content.replace("<br>", " ")
-				.replace("{", " ").split(" ");
-		for (String value : v) {
-
-			for (String v1 : idClass) {
-
-				if (value.indexOf(v1) == 0) {
-					content = content.replace(value,
-							"<span style=\"color:red\">" + value + "</span>");
-				}
-			}
-		}
-		return content;
 	}
 
 	private void setFontSize(int fontSize) {

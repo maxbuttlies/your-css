@@ -13,7 +13,6 @@ import de.maxbuttlies.css.editor.server.database.PMF;
 
 public class DBConnector {
 	private static DBConnector singleton = null;
-	private static final String DIR = "./css/";
 
 	private DBConnector() {
 
@@ -27,14 +26,12 @@ public class DBConnector {
 		return singleton;
 	}
 
-	public void saveCSS(String domain, String css)
-			throws Exception {
+	public void saveCSS(String domain, String css) throws Exception {
 		PersistenceManager pm = null;
 		try {
 			pm = PMF.get().getPersistenceManager();
-			System.out.println("Domain: " + domain);
-			Key key = KeyFactory.createKey(
-					Domain.class.getSimpleName(), domain);
+			Key key = KeyFactory
+					.createKey(Domain.class.getSimpleName(), domain);
 
 			Domain d = null;
 
@@ -48,6 +45,7 @@ public class DBConnector {
 				pm.makePersistent(d);
 			}
 		} catch (Exception e) {
+			System.out.println("Ieso komme hiwer raus?");
 			e.printStackTrace();
 		} finally {
 			pm.close();
@@ -59,8 +57,8 @@ public class DBConnector {
 		PersistenceManager pm = null;
 		try {
 			pm = PMF.get().getPersistenceManager();
-			Key key = KeyFactory.createKey(
-					Domain.class.getSimpleName(), domain);
+			Key key = KeyFactory
+					.createKey(Domain.class.getSimpleName(), domain);
 
 			Domain d = pm.getObjectById(Domain.class, key);
 			s = d.getCss();
@@ -80,8 +78,9 @@ public class DBConnector {
 		try {
 			pm = PMF.get().getPersistenceManager();
 
-			List<Domain> domains = (List<Domain>) pm.newQuery(
-					Domain.class).execute();
+			@SuppressWarnings("unchecked")
+			List<Domain> domains = (List<Domain>) pm.newQuery(Domain.class)
+					.execute();
 
 			for (Domain domain : domains) {
 				names.add(domain.getDomain());
